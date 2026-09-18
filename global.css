@@ -11,6 +11,12 @@
 box-sizing:border-box
 }
 
+/* Wrappers dos componentes (custom elements) não devem gerar caixa própria,
+   preservando o layout exatamente como era com HTML "solto" no body */
+site-header, site-hero, site-quem-somos, site-socios, site-atuacao, site-contato, site-footer{
+  display: contents;
+}
+
 html,body{
   margin:0;
   font-family: "Roboto", sans-serif;

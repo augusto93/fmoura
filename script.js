@@ -129,31 +129,6 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
   }
 
 
-  // === Partner info toggle ===
-  document.querySelectorAll('.partner-text').forEach(block => {
-    const icoMore = block.querySelector('.icoMore');
-    const icoLess = block.querySelector('.icoLess');
-    const moreInfo = block.querySelector('.moreInfo');
-    const partnerImg = block.querySelector('.partner-img');
-
-    if (icoMore) {
-      icoMore.addEventListener('click', () => {
-        if (moreInfo) moreInfo.style.display = "flex";
-        if (partnerImg) partnerImg.style.display = "none";
-        icoMore.style.display = "none";
-      });
-    }
-
-    if (icoLess) {
-      icoLess.addEventListener('click', () => {
-        if (moreInfo) moreInfo.style.display = "none";
-        if (partnerImg) partnerImg.style.display = "flex";
-        if (icoMore) icoMore.style.display = "inline";
-      });
-    }
-  });
-
-
   // === Áreas de atuação (com toggle + seta + GSAP suave) ===
   const todasAtuas = document.querySelectorAll('.area-list p[class^="atua"]');
   const todasInfos = document.querySelectorAll('.area-list .atuaInfotribu');

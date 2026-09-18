@@ -343,10 +343,9 @@ button {
   font-weight: 500;
   display: flex;
   flex-direction: column;
-  padding-top: 10%;
+  padding-top: 5%;
   justify-content: flex-end;
-  height: 100%;
-  max-height:1080px;
+  height: auto;
   background-color: var(--white)
 }
 
@@ -380,38 +379,37 @@ button {
   background-color: var(--green);
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: stretch;
 }
 
 .partner-img {
-  width: 100%;
+  width: 50%;
+  height: 750px;
+  object-fit: cover;
   background-color: var(--white);
 }
 
-.icoMore, .icoLess{
-  cursor: pointer;
-}
-
 .moreInfo {
-  flex-direction: column; 
-  padding: 20% 0; 
-  display: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 4% 0 0 0;
 }
 
 .more {
+  flex: 1;
   gap: 20px;
   background-color: var(--green);
-  margin: 10% 20% 5% 20%;
+  margin: 5% 8%;
   display: flex;
   flex-direction: column;
 }
 
-.more div {
+.more-icons {
+  display: flex;
   gap: 2%;
-  padding: 2% 0;
   align-items: center;
-  width: 100%;
 }
 
 /* Contato */
@@ -573,6 +571,13 @@ button {
  }
  .socios-content {
   flex-direction: column;
+ }
+ .partner-text {
+  flex-direction: column;
+ }
+ .partner-img {
+  width: 100%;
+  height: auto;
  }
  .socios h3 {
   padding: 0 30px;
