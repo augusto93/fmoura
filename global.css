@@ -5,6 +5,7 @@
 --white:#ffffff;
 --max:1560px;
 --min:1366px;
+--header-height:0px; /* atualizado via JS com a altura real do header */
 }
 
 *{
@@ -55,6 +56,6 @@ a{
 /* Para telas a partir de 1080px */
 @media screen and (max-width: 1080px) {
  .container{
-  padding: 15% 5%;
+  padding: 5%;
  }
 }

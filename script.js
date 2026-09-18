@@ -1,5 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // === Altura real do header (todas as seções usam calc(100vh - header) para ficarem do mesmo tamanho) ===
+  const headerEl = document.querySelector('.header');
+
+  function atualizarAlturaHeader() {
+    if (!headerEl) return;
+    document.documentElement.style.setProperty('--header-height', `${headerEl.offsetHeight}px`);
+  }
+
+  atualizarAlturaHeader();
+  window.addEventListener('resize', atualizarAlturaHeader);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(atualizarAlturaHeader);
+  }
+  if (headerEl && 'ResizeObserver' in window) {
+    new ResizeObserver(atualizarAlturaHeader).observe(headerEl);
+  }
+
+
   // === Navegação suave ===
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {

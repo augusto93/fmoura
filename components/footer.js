@@ -3,7 +3,7 @@ class SiteFooter extends HTMLElement {
     this.innerHTML = `
   <footer class="footer">
     <div style="max-width:var(--max);margin:0 auto;display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
-      <span>© 2025 FMoura Vaz Advogados. Todos os direitos reservados.</span>
+      <span>© 2026 FMoura Advogados. Todos os direitos reservados.</span>
     </div>
   </footer>
 `;
