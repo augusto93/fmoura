@@ -18,7 +18,7 @@ class SiteContato extends HTMLElement {
               <div>RJ<br>Pr. de Botafogo, 228, 16º andar<br>Botafogo, RJ<br>CEP 22250-906<br>+55 21 3736 3624</div>
             </div>
             <div>
-              <img src="image/selo.png" >
+              <img class="selo-img" src="image/selo.png" >
             </div>
           </div>
           <div class="contato-container">

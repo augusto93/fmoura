@@ -6,6 +6,7 @@
 --max:1560px;
 --min:1366px;
 --header-height:0px; /* atualizado via JS com a altura real do header */
+--footer-height:90px;
 }
 
 *{
@@ -47,7 +48,10 @@ a{
 
 /* Footer */
 .footer{
-  padding:30px 20px;
+  min-height: var(--footer-height);
+  display: flex;
+  align-items: center;
+  padding:10px 20px;
   color:var(--white);
   background-color: var(--black);
   font-size: 14px;
