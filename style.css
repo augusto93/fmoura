@@ -95,8 +95,8 @@
 .kicker{
   display: flex; 
   justify-content: flex-end;
-  font-size: 2.5rem;
-  line-height: 4rem;
+  font-size: 2rem;
+  line-height: 3.2rem;
   width: 100%;
   height: 50%;
 }
@@ -106,8 +106,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
   margin-bottom: 20px;
+}
+
+.hero-logo img {
+  width: 100vw;
+  max-width: 100%;
+  height: auto;
+}
+
+.hero-logo-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .hero-logo-desktop {
+    display: none;
+  }
+  .hero-logo-mobile {
+    display: block;
+  }
 }
 
 .blink {

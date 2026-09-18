@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollToPlugin);
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // === Altura real do header (todas as seções usam calc(100vh - header) para ficarem do mesmo tamanho) ===
@@ -18,14 +20,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // === Navegação suave ===
+  // === Navegação suave (GSAP) ===
+  const DURACAO_SCROLL = 1.3; // segundos — ajuste aqui a velocidade do scroll ao clicar no menu
+
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
       if (id.length > 1) {
         e.preventDefault();
         const alvo = document.querySelector(id);
-        if (alvo) alvo.scrollIntoView({ behavior: 'smooth' });
+        if (alvo) {
+          gsap.to(window, {
+            duration: DURACAO_SCROLL,
+            scrollTo: { y: alvo, autoKill: false },
+            ease: 'power2.out'
+          });
+        }
       }
     });
   });

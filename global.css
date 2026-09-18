@@ -24,7 +24,6 @@ html,body{
   font-family: "Roboto", sans-serif;
   color: var(--black);
   background:#fff;
-  scroll-behavior: smooth; /* rolagem suave */
 }
 
 h1,h2,h3,h4,p{
