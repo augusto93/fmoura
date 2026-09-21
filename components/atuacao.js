@@ -39,7 +39,7 @@ class SiteAtuacao extends HTMLElement {
               <li>Acomnanhamento de procedimentos de fiscalizacão tributária ou aduaneira em curso com o objetivo de conferir efetividade aos esclarecimentos prestados pelos clientes e prevenir eventuais contingências indevidas.</li>
 
             </ol>
-            <div class="setaAtribu"><img width="30px" src="image/arrow-atua.svg"></div>
+            <div class="setaAtribu"><img width="30px" src="image/arrow-atua.svg" alt="Expandir área de atuação"></div>
           </div>
           <p class="atua2">Direito Trabalhista</p>
           <div class="atuaInfotribu">
@@ -54,7 +54,7 @@ class SiteAtuacao extends HTMLElement {
 
               <li>Condução de reclamações trabalhistas e ações civis públicas.</li>
             </ol>
-            <div class="setaAtribu"><img width="30px" src="image/arrow-atua.svg"></div>
+            <div class="setaAtribu"><img width="30px" src="image/arrow-atua.svg" alt="Expandir área de atuação"></div>
           </div>
           <p class="atua3">Direito Cível</p>
           <div class="atuaInfotribu">
@@ -94,12 +94,12 @@ class SiteAtuacao extends HTMLElement {
 
               <li>Representação de clientes perante os órgãos da Administração Pública;</li>
             </ol>
-            <div class="setaAtribu"><img width="30px" src="image/arrow-atua.svg"></div>
+            <div class="setaAtribu"><img width="30px" src="image/arrow-atua.svg" alt="Expandir área de atuação"></div>
           </div>
         </div>
       </div>
       <div class="imgAtuacao">
-        <img src="image/atuacao-img.jpg">
+        <img src="image/atuacao-img.jpg" alt="Equipe de atuação do escritório">
       </div>
     </div>
   </section>

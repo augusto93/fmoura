@@ -20,7 +20,7 @@ class SiteQuemSomos extends HTMLElement {
           </p>
         </div>
       </div>
-      <button class="arrow left"><img height="50" src="image/arrow-left.svg"></button>
+      <button class="arrow left"><img height="50" src="image/arrow-left.svg" alt="Anterior"></button>
       <div class="carousel-container">
         <div class="carousel">
           <div class="carousel-item"><img src="image/badge-2018.png" alt="2018"></div>
@@ -32,7 +32,7 @@ class SiteQuemSomos extends HTMLElement {
           <div class="carousel-item"><img src="image/badge-2025.png" alt="2025"></div>
         </div>
       </div>
-      <button class="arrow right"><img height="50" src="image/arrow-right.svg"></button>
+      <button class="arrow right"><img height="50" src="image/arrow-right.svg" alt="Próximo"></button>
     </div>
   </section>
 `;

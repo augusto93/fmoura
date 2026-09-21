@@ -87,25 +87,6 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
 }
 
 
-  // === Mapa Contato ===
-  window.mostrarMapa = (opcao) => {
-    const btn1 = document.getElementById("btn1");
-    const btn2 = document.getElementById("btn2");
-    const iframeMapa = document.getElementById("iframeMapa");
-
-    if (!iframeMapa || !btn1 || !btn2) return;
-
-    const mapas = {
-      1: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.2324598673927!2d-46.690781523923505!3d-23.595994678776012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57486e2c06b7%3A0x6fbec7cfedadfa5f!2sR.%20Gomes%20de%20Carvalho%2C%201581%20-%20cj.%201201%20-%20Vila%20Ol%C3%ADmpia%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004547-006!5e0!3m2!1spt-BR!2sbr!4v1757117063375!5m2!1spt-BR!2sbr",
-      2: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.992392678386!2d-43.18331312393935!3d-22.9505072792243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997ff1202d0eab%3A0x53349276bc3d0dd4!2sCentro%20Empresarial%20Rio%20-%20Praia%20de%20Botafogo%2C%20228%20-%20Botafogo%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2022250-040!5e0!3m2!1spt-BR!2sbr!4v1757116942329!5m2!1spt-BR!2sbr"
-    };
-
-    iframeMapa.src = mapas[opcao] || mapas[1];
-    btn1.classList.toggle("ativo", opcao === 1);
-    btn2.classList.toggle("ativo", opcao === 2);
-  };
-
-
   // === Troca de logo e cores no scroll ===
   const ids = ['top', 'quem-somos', 'socios', 'atuacao', 'contato'];
   const elementos = ids.map(id => document.getElementById(id)).filter(Boolean);
@@ -227,38 +208,53 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
   const btns = document.querySelectorAll(".btn");
   const menuOpen = document.querySelector(".menu-mob");
   const menuClose = document.querySelector(".mob");
+  const menuToggleBtn = menuClose?.querySelector(".btn");
 
   if (btns.length && menuOpen && menuClose) {
+    const setMenuAberto = (aberto) => {
+      menuOpen.classList.toggle("ativo", aberto);
+      menuClose.classList.toggle("hide", aberto);
+      menuOpen.setAttribute("aria-hidden", String(!aberto));
+      if (menuToggleBtn) menuToggleBtn.setAttribute("aria-expanded", String(aberto));
+    };
+
     btns.forEach(btn => {
       btn.addEventListener("click", () => {
-        menuOpen.classList.toggle("ativo");
-        menuClose.classList.toggle("hide");
+        setMenuAberto(!menuOpen.classList.contains("ativo"));
       });
     });
 
     menuOpen.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        menuOpen.classList.remove("ativo");
-        menuClose.classList.remove("hide");
-      });
+      link.addEventListener("click", () => setMenuAberto(false));
     });
+  }
+
+
+  // === Entrada do hero-svg (sem ScrollTrigger, para não afetar o scroll do header) ===
+  const heroSvg = document.querySelector('.hero-svg');
+
+  if (heroSvg && 'IntersectionObserver' in window) {
+    gsap.set(heroSvg, { opacity: 0, scale: 0.95 });
+
+    const heroObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          gsap.to(entry.target, {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            ease: 'power2.out'
+          });
+          heroObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    heroObserver.observe(heroSvg);
   }
 
 });
 
 
-gsap.from(".hero-svg", {
-  scrollTrigger: {
-    trigger: ".hero-svg",
-    start: "top 80%",
-    end: "bottom 20%",
-    scrub: true
-  },
-  opacity: 0,
-  y: 50,
-  scale: 0.95,
-  duration: 1,
-  ease: "power2.out"
-});
 
 

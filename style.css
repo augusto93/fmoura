@@ -28,6 +28,10 @@
   right: 5%;
   top: 4%;
   transition: transform .3s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 0;
 }
 
 .mob {
@@ -39,6 +43,12 @@
   gap:40px;
   font-weight:400;
   align-items: center;
+}
+
+.divider {
+  background-color: var(--white);
+  width: 1px;
+  height: 30px;
 }
 
 .menu-mob {

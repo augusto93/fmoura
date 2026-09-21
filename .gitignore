@@ -1,0 +1,14 @@
+# Artefatos de build/compactados
+*.zip
+*.rar
+
+# Dependências (caso adicione Vite/npm no futuro)
+node_modules/
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de editor
+.vscode/
+.idea/

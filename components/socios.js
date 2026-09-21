@@ -11,9 +11,9 @@ class SiteSocios extends HTMLElement {
           <img class="partner-img" src="image/moura.jpg" alt="Alexandre C. F. Moura">
           <div class="more">
             <div class="more-icons">
-              <img src="image/icom1.png" >
-              <img src="image/icom2.png" >
-              <img src="image/icom3.png" >
+              <img src="image/icom1.png" alt="Símbolo FMoura Vaz Advogados">
+              <img src="image/icom2.png" alt="Prêmio Análise Advocacia 500">
+              <img src="image/icom3.png" alt="Reconhecimento Chambers and Partners">
             </div>
             <a style="text-decoration: none;" href="https://www.linkedin.com/in/alexandrecfmoura/" target="_blank" rel="noopener noreferrer">
               <h4>Alexandre C. F. Moura</h4>
