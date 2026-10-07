@@ -41,25 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // === Tabs de escritório ===
-  const tabs = document.querySelectorAll('.tabs button');
-  const panels = {
-    sp: document.getElementById('panel-sp'),
-    rj: document.getElementById('panel-rj')
-  };
-
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabs.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const key = btn.dataset.tab;
-      Object.entries(panels).forEach(([k, el]) => {
-        if (el) el.hidden = k !== key;
-      });
-    });
-  });
-
-
 const carousel = document.querySelector(".carousel"); 
 const leftArrow = document.querySelector(".arrow.left"); 
 const rightArrow = document.querySelector(".arrow.right"); 
@@ -87,8 +68,39 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
 }
 
 
+  // === Carrossel de profissionais ===
+  const profTrack = document.querySelector('.profissionais-track');
+  const profSlides = document.querySelectorAll('.profissional');
+  const profPrev = document.querySelector('.prof-prev');
+  const profNext = document.querySelector('.prof-next');
+  const profContador = document.querySelector('.prof-contador');
+
+  if (profTrack && profSlides.length && profPrev && profNext) {
+    let profAtual = 0;
+
+    const irParaProfissional = (indice) => {
+      profAtual = (indice + profSlides.length) % profSlides.length;
+      gsap.to(profTrack, { xPercent: -100 * profAtual, duration: 0.6, ease: 'power2.out' });
+      if (profContador) profContador.textContent = `${profAtual + 1} / ${profSlides.length}`;
+    };
+
+    profPrev.addEventListener('click', () => irParaProfissional(profAtual - 1));
+    profNext.addEventListener('click', () => irParaProfissional(profAtual + 1));
+
+    // Swipe no mobile
+    let toqueInicioX = null;
+    profTrack.addEventListener('touchstart', e => { toqueInicioX = e.touches[0].clientX; }, { passive: true });
+    profTrack.addEventListener('touchend', e => {
+      if (toqueInicioX === null) return;
+      const delta = e.changedTouches[0].clientX - toqueInicioX;
+      if (Math.abs(delta) > 50) irParaProfissional(profAtual + (delta < 0 ? 1 : -1));
+      toqueInicioX = null;
+    });
+  }
+
+
   // === Troca de logo e cores no scroll ===
-  const ids = ['top', 'quem-somos', 'socios', 'atuacao', 'contato'];
+  const ids = ['top', 'quem-somos', 'profissionais', 'atuacao', 'contato'];
   const elementos = ids.map(id => document.getElementById(id)).filter(Boolean);
 
   const header = document.querySelector('.brand');
@@ -113,7 +125,7 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
               divsMenu.forEach(d => d.style.backgroundColor = "#fff");
               break;
 
-            case 'socios':
+            case 'profissionais':
               header.style.display = "flex";
               nav.style.color = "#000";
               nav.style.justifyContent = "space-between";
@@ -138,12 +150,9 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
   }
 
 
-  // === Áreas de atuação (com toggle + seta + GSAP suave) ===
+  // === Áreas de atuação (com toggle + GSAP suave) ===
   const todasAtuas = document.querySelectorAll('.area-list p[class^="atua"]');
   const todasInfos = document.querySelectorAll('.area-list .atuaInfotribu');
-  const setas = document.querySelectorAll('.setaAtribu');
-
-  let indiceAtual = null;
 
   function abrirInfo(info) {
     gsap.set(info, { display: 'block' });
@@ -182,27 +191,14 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
       todasAtuas.forEach((outra, i) => {
         if (i !== indice) outra.style.display = 'none';
       });
-      indiceAtual = indice;
     } else {
       await fecharInfo(info);
-      indiceAtual = null;
     }
   }
 
   todasAtuas.forEach((p, i) => {
     p.addEventListener('click', () => toggleAtua(i));
   });
-
-  setas.forEach(seta => {
-    seta.addEventListener('click', () => {
-      if (indiceAtual === null) toggleAtua(0);
-      else {
-        const proxima = (indiceAtual + 1) % todasAtuas.length;
-        toggleAtua(proxima);
-      }
-    });
-  });
-
 
   // === Menu mobile ===
   const btns = document.querySelectorAll(".btn");

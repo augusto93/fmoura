@@ -6,12 +6,12 @@
 }
 
 .nav{
-  max-width:var(--min);
+  max-width:var(--max);
   margin:0 auto;
   display:flex;
   align-items:center;
   justify-content:flex-end;
-  padding:35px 5px;
+  padding:35px var(--gutter);
   font-size: 1rem;
   text-transform: uppercase;
   transition: background-color 0.4s ease;
@@ -98,8 +98,14 @@
   justify-content: flex-end;
   padding-top: 10%;
   align-items:center;
-  height: 100vh;
-  overflow-y: auto;
+  min-height: 100vh;
+}
+
+/* O wordmark "FMOURA" é full-bleed: a hero não recebe o gutter do .container no desktop */
+@media screen and (min-width: 1081px) {
+  .container.hero-inner{
+    padding-inline: 0;
+  }
 }
 
 .kicker{
@@ -108,7 +114,7 @@
   font-size: 2rem;
   line-height: 3.2rem;
   width: 100%;
-  height: 50%;
+  flex: 1; /* ocupa o espaço acima do wordmark (antes: height 50% de um pai com altura fixa) */
 }
 
 .hero-svg {
@@ -182,8 +188,7 @@
   align-items: center;
   justify-content: space-evenly;
   padding-top: var(--header-height);
-  height: 100vh;
-  overflow-y: auto;
+  min-height: 100vh;
 }
 
 .title{
@@ -312,6 +317,11 @@ button {
   justify-content: space-evenly;
 } */
 
+/* Compensa o gutter do .container para a imagem continuar sangrando à esquerda */
+.imgAtuacao {
+  margin-left: calc(-1 * var(--gutter));
+}
+
 .imgAtuacao img {
   margin: 10% 0 0 -22%;
 }
@@ -353,16 +363,8 @@ button {
   padding: 1% 0;
 }
 
-.setaAtribu {
-  cursor: pointer;
-  position: absolute;
-  bottom: 40%;
-  left: 105%;
-  z-index: 99999;
-}
-
-/* Sócios */
-#socios{
+/* Profissionais */
+#profissionais{
   position: relative;
 }
 
@@ -375,8 +377,7 @@ button {
   flex-direction: column;
   padding-top: calc(var(--header-height) + 5%);
   justify-content: flex-end;
-  height: 100vh;
-  overflow-y: auto;
+  min-height: 100vh;
   background-color: var(--white)
 }
 
@@ -386,12 +387,55 @@ button {
   font-size: 2rem;
   width: 100%;
   font-weight: 400;
+  padding-inline: var(--gutter);
 }
 
 .socios-content {
+  position: relative;
   display: flex;
   justify-content: center;
   background-color: var(--green);
+}
+
+/* Carrossel de profissionais */
+.profissionais-viewport {
+  width: 100%;
+  min-width: 0; /* impede que a largura somada dos slides estique o container */
+  overflow: hidden;
+}
+
+.profissionais-track {
+  display: flex;
+  touch-action: pan-y;
+}
+
+.profissional {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.profissionais-nav {
+  position: absolute;
+  right: 8%;
+  bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+.profissionais-nav button {
+  width: auto;
+  height: auto;
+  border: none;
+  padding: 5px;
+}
+
+.profissionais-nav img {
+  display: block;
+  height: 36px;
 }
 
 .socios-content h4 {
@@ -434,6 +478,7 @@ button {
   gap: 20px;
   background-color: var(--green);
   margin: 5% 8%;
+  padding-bottom: 60px; /* espaço para as setas do carrossel */
   display: flex;
   flex-direction: column;
 }
@@ -447,8 +492,7 @@ button {
 /* Contato */
 .contato{
   position:relative;
-  height: calc(100vh - var(--footer-height));
-  overflow-y: auto;
+  min-height: calc(100vh - var(--footer-height));
   background:var(--grey);
   color:#fff;
   font-size: 1rem;
@@ -568,9 +612,6 @@ button {
   }
   .about-inner{
     align-items: flex-start;
-    height: 100vh;
-    min-height: initial;
-    overflow-y: visible;
   }
   .description h3{
     padding-top: 50px;
@@ -589,8 +630,7 @@ button {
     padding-top: 50px;
   }
   .contato{
-    height: auto;
-    overflow-y: visible;
+    min-height: auto;
   }
   .contato-content{
     gap: 50px;
@@ -613,9 +653,7 @@ button {
  }
  .socios {
   padding-top: 50px;
-  height: auto !important;
-  max-height: initial !important;
-  overflow-y: visible;
+  min-height: auto;
  }
  .more {
   margin: 5%;
@@ -624,15 +662,16 @@ button {
   flex-direction: column;
   margin-top: -1px;
  }
+ .profissionais-nav {
+  right: 5%;
+  bottom: 25px;
+ }
  .partner-text {
   flex-direction: column;
  }
  .partner-img {
   width: 100%;
   height: 450px;
- }
- .socios h3 {
-  padding: 0 30px;
  }
 .imgAtuacao img {
   display: none;

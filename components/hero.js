@@ -12,10 +12,10 @@ class SiteHero extends HTMLElement {
       </div>
       <div class="hero-svg">
         <div class="hero-logo hero-logo-desktop">
-          <img src="image/logo-hero.svg" alt="Fmoura Vaz">
+          <img src="image/logo-hero.svg" alt="FMoura Advogados">
         </div>
         <div class="hero-logo hero-logo-mobile">
-          <img src="image/logo-hero-mob.svg" alt="Fmoura Vaz">
+          <img src="image/logo-hero-mob.svg" alt="FMoura Advogados">
         </div>
          <a href="#quem-somos">
           <img class="blink" width="60px" src="image/arrow-down.svg" alt="Saiba mais">

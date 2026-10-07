@@ -5,7 +5,8 @@
 --white:#ffffff;
 --max:1560px;
 --min:1366px;
---header-height:0px; /* atualizado via JS com a altura real do header */
+--header-height:115px; /* 35px + logo 45px + 35px; o JS atualiza com a altura medida */
+--gutter:clamp(24px, 5vw, 80px); /* respiro lateral */
 --footer-height:90px;
 }
 
@@ -38,6 +39,7 @@ a{
 .container {
   max-width: var(--max);
   margin: 0 auto;
+  padding-inline: var(--gutter);
 }
 
 .content {
@@ -59,6 +61,6 @@ a{
 /* Para telas a partir de 1080px */
 @media screen and (max-width: 1080px) {
  .container{
-  padding: 5%;
+  padding-block: 5%;
  }
 }
