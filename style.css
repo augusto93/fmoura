@@ -225,65 +225,69 @@ html[data-tela="notebook"] .hero-logo img {
   padding-bottom: 50px;
 }
 
+/* Selos: setas ficam no fluxo, alinhadas ao centro do carrossel */
+.selos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  margin-top: 4vh;
+}
+
 .carousel-container {
+  --selo: 114px;      /* 5% menor que os 120px originais */
+  --selo-gap: 20px;
   position: relative;
   width: 100%;
-  max-width: 1140px;
-  overflow: hidden; /* esconde o que sai da área */
+  /* mostra 6 selos inteiros; o JS gira os itens para o loop infinito */
+  max-width: calc(6 * var(--selo) + 5 * var(--selo-gap));
+  overflow: hidden;
+  padding-block: 12px; /* espaço para a sombra */
+  touch-action: pan-y;
 }
 
 .carousel {
   display: flex;
-  justify-content: center;
-  gap: 20px; /* espaço entre os itens */
-  scroll-behavior: smooth; /* rolagem suave */
-  overflow-x: auto; /* permite rolagem horizontal */
-  scrollbar-width: none; /* remove barra no Firefox */
-  max-width: 850px;
-  margin: 0 auto;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none; /* remove barra no Chrome */
+  gap: var(--selo-gap);
+  will-change: transform;
 }
 
 .carousel-item {
-  min-width: 120px;
-  min-height: 120px;
+  width: var(--selo);
+  height: var(--selo);
   border-radius: 50%;
   background: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0; /* impede que diminua além do mínimo */
+  flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .carousel-item img {
-  width: 90px;
+  width: 86px;
   height: auto;
   object-fit: contain;
-  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Setas de navegação */
 .arrow {
-  position: absolute;
-  top: 75%;
-  transform: translateY(-50%);
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
   border: none;
-  font-size: 100px;
   padding: 5px 10px;
   cursor: pointer;
-  z-index: 999;
+  line-height: 0;
 }
 
 button {
   background: none;
 }
 
-.arrow.left { left: 10%; }
-.arrow.right { right: 10%; }
 
 /* Atuação */
 #atuacao{
@@ -422,6 +426,10 @@ button {
 .profissionais-track {
   display: flex;
   touch-action: pan-y;
+}
+
+.profissionais-track img {
+  -webkit-user-drag: none;
 }
 
 .profissional {
@@ -910,9 +918,21 @@ html.is-loading .preloader,
   flex-direction: column;
   margin-top: -1px;
  }
+ /* Navegação sobre a foto do profissional (foto tem 450px de altura no mobile) */
  .profissionais-nav {
+  top: calc(450px - 64px);
+  bottom: auto;
   right: 5%;
-  bottom: 25px;
+  gap: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: rgba(9, 135, 105, .85);
+ }
+ .profissionais-nav img {
+  height: 28px;
+ }
+ .more {
+  padding-bottom: 0;
  }
  .partner-text {
   flex-direction: column;
@@ -921,7 +941,19 @@ html.is-loading .preloader,
   width: 100%;
   height: 450px;
  }
-.imgAtuacao img {
+/* Arrastar para os lados só existe no mobile/tablet */
+.carousel-container,
+.profissionais-track {
+  cursor: grab;
+  user-select: none;
+}
+.carousel-container.arrastando,
+.profissionais-track.arrastando {
+  cursor: grabbing;
+}
+
+/* Esconde o bloco inteiro: a margem negativa dele puxava o texto para a borda */
+.imgAtuacao {
   display: none;
 }
 

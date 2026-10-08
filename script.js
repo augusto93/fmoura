@@ -69,31 +69,90 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-const carousel = document.querySelector(".carousel"); 
-const leftArrow = document.querySelector(".arrow.left"); 
-const rightArrow = document.querySelector(".arrow.right"); 
-const scrollAmount = 200; 
+  // === Arrastar para os lados (somente mobile e tablet) ===
+  // onMove recebe o deslocamento em px; onEnd recebe o deslocamento final.
+  // Movimento vertical maior que o horizontal é ignorado para não travar o scroll da página.
+  function arrastavel(el, { onMove, onEnd }) {
+    let inicioX = null, inicioY = null, deltaX = 0, horizontal = null;
 
-if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; carousel.innerHTML += items; 
+    el.addEventListener('pointerdown', e => {
+      if (!['mobile', 'tablet'].includes(html.getAttribute('data-tela'))) return;
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      inicioX = e.clientX; inicioY = e.clientY; deltaX = 0; horizontal = null;
+    });
 
-  leftArrow.addEventListener("click", () => { 
-    if (carousel.scrollLeft === 0) 
-    { carousel.scrollLeft = carousel.scrollWidth / 2; } 
-    carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-   }); 
-   
-   rightArrow.addEventListener("click", () => { 
-    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1) 
-      { carousel.scrollLeft = carousel.scrollWidth / 2 - carousel.clientWidth; } 
-    carousel.scrollBy({ left: scrollAmount, behavior: "smooth" }); 
-  }); 
-  
-  carousel.addEventListener("scroll", () => { 
-    if (carousel.scrollLeft >= carousel.scrollWidth / 2) { carousel.scrollLeft = 0; } 
-    else if (carousel.scrollLeft === 0) 
-      { carousel.scrollLeft = carousel.scrollWidth / 2; } 
-  }); 
-}
+    el.addEventListener('pointermove', e => {
+      if (inicioX === null) return;
+      const dx = e.clientX - inicioX, dy = e.clientY - inicioY;
+      if (horizontal === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+        horizontal = Math.abs(dx) > Math.abs(dy);
+        if (horizontal) { el.setPointerCapture(e.pointerId); el.classList.add('arrastando'); }
+      }
+      if (horizontal) { deltaX = dx; onMove(dx); }
+    });
+
+    const terminar = () => {
+      if (inicioX === null) return;
+      if (horizontal) onEnd(deltaX);
+      el.classList.remove('arrastando');
+      inicioX = null;
+    };
+    el.addEventListener('pointerup', terminar);
+    el.addEventListener('pointercancel', terminar);
+
+    // um arrasto não deve disparar o clique em links (ex.: LinkedIn do profissional)
+    el.addEventListener('click', e => {
+      if (Math.abs(deltaX) > 6) { e.preventDefault(); e.stopPropagation(); deltaX = 0; }
+    }, true);
+  }
+
+
+  // === Carrossel de selos (infinito: os itens giram no DOM a cada passo) ===
+  const selosTrack = document.querySelector('.carousel');
+  const selosViewport = document.querySelector('.carousel-container');
+  const selosPrev = document.querySelector('.arrow.left');
+  const selosNext = document.querySelector('.arrow.right');
+
+  if (selosTrack && selosViewport && selosTrack.children.length > 1) {
+    let selosAnimando = false;
+
+    const passoSelo = () =>
+      selosTrack.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(selosTrack).columnGap || 0);
+
+    const proximoSelo = () => {
+      if (selosAnimando) return;
+      selosAnimando = true;
+      gsap.to(selosTrack, {
+        x: -passoSelo(), duration: 0.45, ease: 'power2.inOut',
+        onComplete: () => {
+          selosTrack.appendChild(selosTrack.firstElementChild);
+          gsap.set(selosTrack, { x: 0 });
+          selosAnimando = false;
+        }
+      });
+    };
+
+    const anteriorSelo = () => {
+      if (selosAnimando) return;
+      selosAnimando = true;
+      const xAtual = gsap.getProperty(selosTrack, 'x');
+      selosTrack.prepend(selosTrack.lastElementChild);
+      gsap.set(selosTrack, { x: xAtual - passoSelo() });
+      gsap.to(selosTrack, { x: 0, duration: 0.45, ease: 'power2.inOut', onComplete: () => { selosAnimando = false; } });
+    };
+
+    selosPrev?.addEventListener('click', anteriorSelo);
+    selosNext?.addEventListener('click', proximoSelo);
+
+    arrastavel(selosViewport, {
+      onMove: dx => { if (!selosAnimando) gsap.set(selosTrack, { x: Math.max(-passoSelo(), Math.min(passoSelo(), dx)) }); },
+      onEnd: dx => {
+        if (dx < -40) proximoSelo();
+        else if (dx > 40) anteriorSelo();
+        else gsap.to(selosTrack, { x: 0, duration: 0.3 });
+      }
+    });
+  }
 
 
   // === Carrossel de profissionais ===
@@ -115,14 +174,14 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
     profPrev.addEventListener('click', () => irParaProfissional(profAtual - 1));
     profNext.addEventListener('click', () => irParaProfissional(profAtual + 1));
 
-    // Swipe no mobile
-    let toqueInicioX = null;
-    profTrack.addEventListener('touchstart', e => { toqueInicioX = e.touches[0].clientX; }, { passive: true });
-    profTrack.addEventListener('touchend', e => {
-      if (toqueInicioX === null) return;
-      const delta = e.changedTouches[0].clientX - toqueInicioX;
-      if (Math.abs(delta) > 50) irParaProfissional(profAtual + (delta < 0 ? 1 : -1));
-      toqueInicioX = null;
+    // Arrastar para os lados troca o profissional (o slide acompanha o dedo/mouse)
+    arrastavel(profTrack, {
+      onMove: dx => gsap.set(profTrack, { xPercent: -100 * profAtual, x: dx }),
+      onEnd: dx => {
+        gsap.to(profTrack, { x: 0, duration: 0.6, ease: 'power2.out' });
+        if (Math.abs(dx) > 50) irParaProfissional(profAtual + (dx < 0 ? 1 : -1));
+        else irParaProfissional(profAtual);
+      }
     });
   }
 

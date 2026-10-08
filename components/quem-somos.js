@@ -20,19 +20,21 @@ class SiteQuemSomos extends HTMLElement {
           </p>
         </div>
       </div>
-      <button class="arrow left"><img loading="lazy" decoding="async" height="50" src="image/arrow-left.svg" alt="Anterior"></button>
-      <div class="carousel-container">
-        <div class="carousel">
-          <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2018.png" alt="2018"></div>
-          <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2020.png" alt="2020"></div>
-          <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2021.png" alt="2021"></div>
-          <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2021r.png" alt="Regional 2021"></div>
-          <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2022r.png" alt="Regional 2022"></div>
-          <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2024r.png" alt="Regional 2024"></div>
-          <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2025.png" alt="2025"></div>
+      <div class="selos">
+        <button type="button" class="arrow left" aria-label="Selo anterior"><img decoding="async" height="50" src="image/arrow-left.svg" alt=""></button>
+        <div class="carousel-container">
+          <div class="carousel">
+            <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2018.png" alt="2018"></div>
+            <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2020.png" alt="2020"></div>
+            <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2021.png" alt="2021"></div>
+            <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2021r.png" alt="Regional 2021"></div>
+            <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2022r.png" alt="Regional 2022"></div>
+            <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2024r.png" alt="Regional 2024"></div>
+            <div class="carousel-item"><img loading="lazy" decoding="async" src="image/badge-2025.png" alt="2025"></div>
+          </div>
         </div>
+        <button type="button" class="arrow right" aria-label="Próximo selo"><img decoding="async" height="50" src="image/arrow-right.svg" alt=""></button>
       </div>
-      <button class="arrow right"><img loading="lazy" decoding="async" height="50" src="image/arrow-right.svg" alt="Próximo"></button>
     </div>
   </section>
 `;
