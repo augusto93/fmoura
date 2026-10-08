@@ -532,6 +532,11 @@ button {
   align-items: center;
 }
 
+.more-icons img {
+  width: clamp(60px, 10vh, 91px);
+  height: auto;
+}
+
 /* Logos de instituições: círculo branco no mesmo tamanho dos ícones icom*.png */
 .more-icons .icon-logo {
   width: 91px;
@@ -717,10 +722,6 @@ button {
     min-height: 0;
     margin: 4vh 8%;
     gap: clamp(10px, 2vh, 20px);
-  }
-  .more-icons img {
-    width: clamp(60px, 10vh, 91px);
-    height: auto;
   }
   .more-icons .icon-logo {
     width: clamp(60px, 10vh, 91px);
