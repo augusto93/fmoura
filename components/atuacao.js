@@ -39,6 +39,7 @@ class SiteAtuacao extends HTMLElement {
               <li>Acompanhamento de procedimentos de fiscalização tributária ou aduaneira em curso com o objetivo de conferir efetividade aos esclarecimentos prestados pelos clientes e prevenir eventuais contingências indevidas.</li>
 
             </ol>
+            <button type="button" class="atua-fechar">Fechar</button>
           </div>
         </div>
       </div>

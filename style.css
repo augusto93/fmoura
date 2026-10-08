@@ -382,6 +382,21 @@ button {
   padding: 1% 0;
 }
 
+/* "Fechar" no fim do accordion: só no mobile/tablet (no desktop o texto rola dentro da coluna) */
+.atua-fechar {
+  display: none;
+  width: auto;
+  height: auto;
+  margin: 10px 0 30px;
+  padding: 10px 22px;
+  border: 1px solid var(--green);
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
 /* Profissionais */
 #profissionais{
   position: relative;
@@ -950,6 +965,10 @@ html.is-loading .preloader,
 .carousel-container.arrastando,
 .profissionais-track.arrastando {
   cursor: grabbing;
+}
+
+.atua-fechar {
+  display: inline-block;
 }
 
 /* Esconde o bloco inteiro: a margem negativa dele puxava o texto para a borda */

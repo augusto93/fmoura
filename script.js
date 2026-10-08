@@ -162,25 +162,50 @@ document.addEventListener('DOMContentLoaded', () => {
   const profNext = document.querySelector('.prof-next');
   const profContador = document.querySelector('.prof-contador');
 
-  if (profTrack && profSlides.length && profPrev && profNext) {
-    let profAtual = 0;
+  if (profTrack && profSlides.length > 2 && profPrev && profNext) {
+    // Carrossel infinito: o track mantém [anterior, atual, próximo] e fica sempre em -100%;
+    // a cada troca o slide da ponta é movido para o outro lado.
+    profSlides.forEach((slide, i) => { slide.dataset.indice = i; });
+    profTrack.prepend(profTrack.lastElementChild);
+    gsap.set(profTrack, { xPercent: -100 });
 
-    const irParaProfissional = (indice) => {
-      profAtual = (indice + profSlides.length) % profSlides.length;
-      gsap.to(profTrack, { xPercent: -100 * profAtual, duration: 0.6, ease: 'power2.out' });
-      if (profContador) profContador.textContent = `${profAtual + 1} / ${profSlides.length}`;
+    let profAnimando = false;
+
+    const atualizarContador = () => {
+      const atual = Number(profTrack.children[1].dataset.indice);
+      if (profContador) profContador.textContent = `${atual + 1} / ${profSlides.length}`;
     };
 
-    profPrev.addEventListener('click', () => irParaProfissional(profAtual - 1));
-    profNext.addEventListener('click', () => irParaProfissional(profAtual + 1));
+    const trocarProfissional = (direcao) => {
+      if (profAnimando) return;
+      profAnimando = true;
+      gsap.to(profTrack, {
+        xPercent: direcao > 0 ? -200 : 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        onComplete: () => {
+          if (direcao > 0) profTrack.appendChild(profTrack.firstElementChild);
+          else profTrack.prepend(profTrack.lastElementChild);
+          gsap.set(profTrack, { xPercent: -100 });
+          atualizarContador();
+          profAnimando = false;
+        }
+      });
+    };
 
-    // Arrastar para os lados troca o profissional (o slide acompanha o dedo/mouse)
+    profPrev.addEventListener('click', () => trocarProfissional(-1));
+    profNext.addEventListener('click', () => trocarProfissional(1));
+
+    // Arrastar para os lados troca o profissional (o slide acompanha o dedo)
     arrastavel(profTrack, {
-      onMove: dx => gsap.set(profTrack, { xPercent: -100 * profAtual, x: dx }),
+      onMove: dx => {
+        if (profAnimando) return;
+        gsap.set(profTrack, { xPercent: -100 + (dx / profTrack.offsetWidth) * 100 });
+      },
       onEnd: dx => {
-        gsap.to(profTrack, { x: 0, duration: 0.6, ease: 'power2.out' });
-        if (Math.abs(dx) > 50) irParaProfissional(profAtual + (dx < 0 ? 1 : -1));
-        else irParaProfissional(profAtual);
+        if (profAnimando) return;
+        if (Math.abs(dx) > 50) trocarProfissional(dx < 0 ? 1 : -1);
+        else gsap.to(profTrack, { xPercent: -100, duration: 0.3, ease: 'power2.out' });
       }
     });
   }
@@ -285,6 +310,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   todasAtuas.forEach((p, i) => {
     p.addEventListener('click', () => toggleAtua(i));
+  });
+
+  // Botão "Fechar" no fim do texto (mobile/tablet): fecha e volta para o título
+  document.querySelectorAll('.atua-fechar').forEach(botao => {
+    botao.addEventListener('click', async () => {
+      const info = botao.closest('.atuaInfotribu');
+      const titulo = info?.previousElementSibling;
+      const indice = Array.from(todasAtuas).indexOf(titulo);
+      if (indice < 0) return;
+      await toggleAtua(indice);
+      const headerAltura = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
+      gsap.to(window, { duration: 0.6, scrollTo: { y: titulo, offsetY: Math.max(headerAltura, 90), autoKill: false }, ease: 'power2.out' });
+    });
   });
 
   // === Menu mobile ===
