@@ -489,6 +489,11 @@ button {
   color: var(--white);
 }
 
+.socios-content .rotulo {
+  font-family: "redonda", sans-serif;
+  font-weight: 600;
+}
+
 .partner-text{
   background-color: var(--green);
   width: 100%;
@@ -533,7 +538,7 @@ button {
   height: 91px;
   border-radius: 50%;
   background-color: var(--white);
-  padding: 14px;
+  /* padding: 14px; */
   object-fit: contain;
 }
 

@@ -31,9 +31,9 @@ class SiteSocios extends HTMLElement {
                     <br><br>
                     Inscrito na OAB/RJ sob o nº 149.967 e na OAB/SP sob o nº 291.470
                     <br><br>
-                    E-mail: <a href="mailto:moura@fmouraadvogados.com">moura@fmouraadvogados.com</a>
+                    <strong class="rotulo">E-mail:</strong> <a href="mailto:moura@fmouraadvogados.com">moura@fmouraadvogados.com</a>
                   </p>
-                  <p>IDIOMAS<br>Português e Inglês</p>
+                  <p><strong class="rotulo">IDIOMAS</strong><br>Português e Inglês</p>
                 </div>
                 <button type="button" class="mais-info" aria-expanded="false" hidden>Mais info</button>
               </div>
@@ -49,12 +49,14 @@ class SiteSocios extends HTMLElement {
                 <a style="text-decoration: none;" href="https://www.linkedin.com/in/mayara-marra-bispo-13382b85/" target="_blank" rel="noopener noreferrer">
                   <h4>Mayara Marra Bispo</h4>
                 </a>
-                <p>Bacharel em Direito pela Universidade São Judas Tadeu (2016); pós-graduada em Direito Tributário, Tax Law/Taxation, pela Faculdade Damásio (2018).</p>
+                <p>Bacharel em Direito pela Universidade São Judas Tadeu (2016);<br>pós-graduada em Direito Tributário, Tax Law/Taxation, pela Faculdade Damásio (2018).</p>
                 <div class="moreInfo" data-clamp>
                   <p style="font-size: 1rem; font-weight: 400;">
-                    E-mail: <a href="mailto:mayara.bispo@fmouraadvogados.com">mayara.bispo@fmouraadvogados.com</a>
+                    <strong class="rotulo">E-mail:</strong> <a href="mailto:mayara.bispo@fmouraadvogados.com">mayara.bispo@fmouraadvogados.com</a>
+                     <br><br>
+                    <strong class="rotulo">LinkedIn:</strong> <a style="text-decoration: none;" href="https://www.linkedin.com/in/mayara-marra-bispo-13382b85/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/mayara-marra-bispo-13382b85/</a>
                   </p>
-                  <p>IDIOMAS<br>Português e Inglês</p>
+                  <p><strong class="rotulo">IDIOMAS</strong><br>Português e Inglês</p>
                 </div>
                 <button type="button" class="mais-info" aria-expanded="false" hidden>Mais info</button>
               </div>
@@ -70,12 +72,14 @@ class SiteSocios extends HTMLElement {
                 <a style="text-decoration: none;" href="https://www.linkedin.com/in/b%C3%A1rbara-pedrosa-de-sousa-a189a1104/" target="_blank" rel="noopener noreferrer">
                   <h4>Bárbara Pedrosa de Sousa</h4>
                 </a>
-                <p>Bacharel em Direito pela Faculdade Mackenzie Rio (2012); curso de extensão em Planejamento Tributário, Tax Law/Taxation, pelo Ibmec.</p>
+                <p>Bacharel em Direito pela Faculdade Mackenzie Rio (2012);<br>curso de extensão em Planejamento Tributário, Tax Law/Taxation, pelo Ibmec.</p>
                 <div class="moreInfo" data-clamp>
                   <p style="font-size: 1rem; font-weight: 400;">
-                    E-mail: <a href="mailto:barbara.pedrosa@fmouraadvogados.com">barbara.pedrosa@fmouraadvogados.com</a>
+                    <strong class="rotulo">E-mail:</strong> <a href="mailto:barbara.pedrosa@fmouraadvogados.com">barbara.pedrosa@fmouraadvogados.com</a>
+                    <br><br>
+                    <strong class="rotulo">LinkedIn:</strong> <a style="text-decoration: none;" href="https://www.linkedin.com/in/b%C3%A1rbara-pedrosa-de-sousa-a189a1104/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/b%C3%A1rbara-pedrosa-de-sousa-a189a1104/</a>
                   </p>
-                  <p>IDIOMAS<br>Português, Inglês e Espanhol</p>
+                  <p><strong class="rotulo">IDIOMAS</strong><br>Português, Inglês e Espanhol</p>
                 </div>
                 <button type="button" class="mais-info" aria-expanded="false" hidden>Mais info</button>
               </div>
