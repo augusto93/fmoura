@@ -12,7 +12,7 @@ class SiteHero extends HTMLElement {
       </div>
       <div class="hero-svg">
         <div class="hero-logo hero-logo-desktop">
-          <img src="image/logo-hero.svg" alt="FMoura Advogados">
+          <img src="image/logo-hero.svg" alt="FMoura Advogados" width="1284" height="183" fetchpriority="high">
         </div>
         <div class="hero-logo hero-logo-mobile">
           <img src="image/logo-hero-mob.svg" alt="FMoura Advogados">

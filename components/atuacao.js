@@ -43,7 +43,7 @@ class SiteAtuacao extends HTMLElement {
         </div>
       </div>
       <div class="imgAtuacao">
-        <img src="image/atuacao-img.jpg" alt="Equipe de atuação do escritório">
+        <img loading="lazy" decoding="async" src="image/atuacao-img.jpg" width="830" height="615" alt="Equipe de atuação do escritório">
       </div>
     </div>
   </section>

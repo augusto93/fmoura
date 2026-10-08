@@ -8,6 +8,11 @@
 --header-height:115px; /* 35px + logo 45px + 35px; o JS atualiza com a altura medida */
 --gutter:clamp(24px, 5vw, 80px); /* respiro lateral */
 --footer-height:90px;
+--tela-h:100vh; /* altura de uma "tela"; svh evita o salto da barra do navegador no mobile */
+}
+
+@supports (height: 100svh){
+  :root{ --tela-h:100svh; }
 }
 
 *{

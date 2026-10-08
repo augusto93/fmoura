@@ -2,6 +2,34 @@ gsap.registerPlugin(ScrollToPlugin);
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // === Tipo de tela + loader ===
+  // O <head> já marcou html[data-tela]; aqui mantemos atualizado e removemos o loader
+  // quando os recursos principais (fontes + imagens acima da dobra) estiverem prontos.
+  const html = document.documentElement;
+  const preloader = document.querySelector('.preloader');
+
+  function atualizarTela() {
+    if (window.detectarTela) html.setAttribute('data-tela', window.detectarTela());
+  }
+  window.addEventListener('resize', atualizarTela);
+
+  const paginaCarregada = new Promise(resolve => {
+    if (document.readyState === 'complete') resolve();
+    else window.addEventListener('load', resolve, { once: true });
+  });
+  const fontesProntas = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  const limiteEspera = new Promise(resolve => setTimeout(resolve, 5000)); // nunca prende o usuário no loader
+
+  const sitePronto = Promise.race([Promise.all([paginaCarregada, fontesProntas]), limiteEspera]).then(() => {
+    atualizarTela();
+    verificarClamps();
+    html.classList.remove('is-loading');
+    if (preloader) {
+      preloader.classList.add('saindo');
+      setTimeout(() => preloader.remove(), 700);
+    }
+  });
+
   // === Altura real do header (todas as seções usam calc(100vh - header) para ficarem do mesmo tamanho) ===
   const headerEl = document.querySelector('.header');
 
@@ -226,6 +254,51 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
   }
 
 
+  // === "Mais info": mostra o botão só quando o texto não cabe no espaço da seção ===
+  const clamps = document.querySelectorAll('[data-clamp]');
+
+  function verificarClamps() {
+    clamps.forEach(box => {
+      const botao = box.nextElementSibling?.classList.contains('mais-info') ? box.nextElementSibling : null;
+      const excede = box.scrollHeight > box.clientHeight + 2;
+      box.classList.toggle('is-clamped', excede);
+      if (botao) botao.hidden = !excede && !box.classList.contains('is-open');
+    });
+  }
+
+  clamps.forEach(box => {
+    const botao = box.nextElementSibling;
+    if (!botao || !botao.classList.contains('mais-info')) return;
+    botao.addEventListener('click', () => {
+      const aberto = box.classList.toggle('is-open');
+      botao.setAttribute('aria-expanded', String(aberto));
+      botao.textContent = aberto ? 'Menos info' : 'Mais info';
+      if (!aberto) box.scrollTop = 0;
+      verificarClamps();
+    });
+  });
+
+  window.addEventListener('resize', verificarClamps);
+
+
+  // === Lazy load do fundo da seção Quem somos ===
+  const quemSomos = document.getElementById('quem-somos');
+
+  if (quemSomos) {
+    if ('IntersectionObserver' in window) {
+      const bgObserver = new IntersectionObserver(entries => {
+        if (entries.some(e => e.isIntersecting)) {
+          quemSomos.classList.add('bg-carregado');
+          bgObserver.disconnect();
+        }
+      }, { rootMargin: '300px 0px' });
+      bgObserver.observe(quemSomos);
+    } else {
+      quemSomos.classList.add('bg-carregado');
+    }
+  }
+
+
   // === Entrada do hero-svg (sem ScrollTrigger, para não afetar o scroll do header) ===
   const heroSvg = document.querySelector('.hero-svg');
 
@@ -235,12 +308,13 @@ if (carousel && leftArrow && rightArrow) { const items = carousel.innerHTML; car
     const heroObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          gsap.to(entry.target, {
+          // espera o loader sair para a animação ser vista
+          sitePronto.then(() => gsap.to(entry.target, {
             opacity: 1,
             scale: 1,
             duration: 1,
             ease: 'power2.out'
-          });
+          }));
           heroObserver.unobserve(entry.target);
         }
       });

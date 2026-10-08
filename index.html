@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="FMoura Advogados — escritório de advocacia em São Paulo especializado em Direito Tributário.">
   <title>FMoura Advogados</title>
+
+  <!-- Detecta o tipo de tela antes da pintura (o CSS usa html[data-tela]) e ativa o loader -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      window.detectarTela = function () {
+        var w = window.innerWidth;
+        return w <= 767 ? 'mobile' : w <= 1080 ? 'tablet' : w <= 1599 ? 'notebook' : w <= 2199 ? 'desktop' : 'wide';
+      };
+      d.setAttribute('data-tela', window.detectarTela());
+      d.classList.add('is-loading');
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
@@ -25,6 +38,11 @@
   <script src="components/footer.js"></script>
 </head>
 <body>
+  <div class="preloader" aria-hidden="true">
+    <img src="image/logo-white.svg" alt="" width="220">
+    <span class="preloader-bar"></span>
+  </div>
+
   <site-header></site-header>
   <site-hero></site-hero>
   <site-quem-somos></site-quem-somos>

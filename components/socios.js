@@ -10,18 +10,18 @@ class SiteSocios extends HTMLElement {
         <div class="profissionais-viewport">
           <div class="profissionais-track">
             <div class="partner-text profissional">
-              <img class="partner-img" src="image/moura.jpg" alt="Alexandre C. F. Moura">
+              <img loading="lazy" decoding="async" class="partner-img" src="image/moura.jpg" alt="Alexandre C. F. Moura">
               <div class="more">
                 <div class="more-icons">
-                  <img src="image/icom1.png" alt="Símbolo FMoura Advogados">
-                  <img src="image/icom2.png" alt="Prêmio Análise Advocacia 500">
-                  <img src="image/icom3.png" alt="Reconhecimento Chambers and Partners">
+                  <img loading="lazy" decoding="async" src="image/icom1.png" alt="Símbolo FMoura Advogados">
+                  <img loading="lazy" decoding="async" src="image/icom2.png" alt="Prêmio Análise Advocacia 500">
+                  <img loading="lazy" decoding="async" src="image/icom3.png" alt="Reconhecimento Chambers and Partners">
                 </div>
                 <a style="text-decoration: none;" href="https://www.linkedin.com/in/alexandrecfmoura/" target="_blank" rel="noopener noreferrer">
                   <h4>Alexandre C. F. Moura</h4>
                 </a>
                 <p>Bacharel em Direito pela Universidade Federal do Estado do Rio de Janeiro (2007); pós-graduado em Direito Tributário Constitucional pela PUC/SP (2012)</p>
-                <div class="moreInfo">
+                <div class="moreInfo" data-clamp>
                   <p style="font-size: 1rem; font-weight: 400;">
                     Formação acadêmica: Bacharel em Direito pela Universidade Federal do Estado do Rio de Janeiro (2007); pós-graduado em Direito Tributário Constitucional pela PUC/SP (2012)
                     e em Direito Fiscal pela Faculdade de Direito da Universidade de Coimbra (2013); MBA em Finanças pela FUNDACE/USP (2022);
@@ -33,60 +33,59 @@ class SiteSocios extends HTMLElement {
                     <br><br>
                     E-mail: <a href="mailto:moura@fmouraadvogados.com">moura@fmouraadvogados.com</a>
                   </p>
-                  <p>IDIOMAS<br>Inglês</p>
+                  <p>IDIOMAS<br>Português e Inglês</p>
                 </div>
+                <button type="button" class="mais-info" aria-expanded="false" hidden>Mais info</button>
               </div>
             </div>
             <div class="partner-text profissional">
-              <img class="partner-img" src="image/moura.jpg" alt="Nome do Profissional 2">
+              <img loading="lazy" decoding="async" class="partner-img" src="image/mayara.jpg" alt="Mayara Marra Bispo">
               <div class="more">
                 <div class="more-icons">
-                  <img src="image/icom1.png" alt="Símbolo FMoura Advogados">
+                  <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-saojudas.png" alt="Universidade São Judas Tadeu">
+                  <img loading="lazy" decoding="async" src="image/icom2.png" alt="Prêmio Análise Advocacia 500">
+                  <img loading="lazy" decoding="async" class="icon-logo icon-logo-cover" src="image/logo-damasio.png" alt="Faculdade Damásio">
                 </div>
-                <h4>Nome do Profissional 2</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet (2010); Donec ullamcorper nulla non metus auctor fringilla (2015)</p>
-                <div class="moreInfo">
+                <a style="text-decoration: none;" href="https://www.linkedin.com/in/mayara-marra-bispo-13382b85/" target="_blank" rel="noopener noreferrer">
+                  <h4>Mayara Marra Bispo</h4>
+                </a>
+                <p>Bacharel em Direito pela Universidade São Judas Tadeu (2016); pós-graduada em Direito Tributário, Tax Law/Taxation, pela Faculdade Damásio (2018).</p>
+                <div class="moreInfo" data-clamp>
                   <p style="font-size: 1rem; font-weight: 400;">
-                    Formação acadêmica: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum.
-                    Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur.
-                    Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis.
-                    <br><br>
-                    Inscrito na OAB/SP sob o nº 000.000
-                    <br><br>
-                    E-mail: <a href="mailto:contato@fmouraadvogados.com">contato@fmouraadvogados.com</a>
+                    E-mail: <a href="mailto:mayara.bispo@fmouraadvogados.com">mayara.bispo@fmouraadvogados.com</a>
                   </p>
-                  <p>IDIOMAS<br>Inglês</p>
+                  <p>IDIOMAS<br>Português e Inglês</p>
                 </div>
+                <button type="button" class="mais-info" aria-expanded="false" hidden>Mais info</button>
               </div>
             </div>
             <div class="partner-text profissional">
-              <img class="partner-img" src="image/moura.jpg" alt="Nome do Profissional 3">
+              <img loading="lazy" decoding="async" class="partner-img" src="image/barbara.jpg" alt="Bárbara Pedrosa de Sousa">
               <div class="more">
                 <div class="more-icons">
-                  <img src="image/icom1.png" alt="Símbolo FMoura Advogados">
+                  <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-mackenzie.png" alt="Faculdade Mackenzie Rio">
+                  <img loading="lazy" decoding="async" src="image/icom2.png" alt="Prêmio Análise Advocacia 500">
+                  <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-ibmec.png" alt="Ibmec">
                 </div>
-                <h4>Nome do Profissional 3</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet (2010); Donec ullamcorper nulla non metus auctor fringilla (2015)</p>
-                <div class="moreInfo">
+                <a style="text-decoration: none;" href="https://www.linkedin.com/in/b%C3%A1rbara-pedrosa-de-sousa-a189a1104/" target="_blank" rel="noopener noreferrer">
+                  <h4>Bárbara Pedrosa de Sousa</h4>
+                </a>
+                <p>Bacharel em Direito pela Faculdade Mackenzie Rio (2012); curso de extensão em Planejamento Tributário, Tax Law/Taxation, pelo Ibmec.</p>
+                <div class="moreInfo" data-clamp>
                   <p style="font-size: 1rem; font-weight: 400;">
-                    Formação acadêmica: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum.
-                    Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur.
-                    Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis.
-                    <br><br>
-                    Inscrito na OAB/SP sob o nº 000.000
-                    <br><br>
-                    E-mail: <a href="mailto:contato@fmouraadvogados.com">contato@fmouraadvogados.com</a>
+                    E-mail: <a href="mailto:barbara.pedrosa@fmouraadvogados.com">barbara.pedrosa@fmouraadvogados.com</a>
                   </p>
-                  <p>IDIOMAS<br>Inglês</p>
+                  <p>IDIOMAS<br>Português, Inglês e Espanhol</p>
                 </div>
+                <button type="button" class="mais-info" aria-expanded="false" hidden>Mais info</button>
               </div>
             </div>
           </div>
         </div>
         <div class="profissionais-nav">
-          <button type="button" class="prof-prev" aria-label="Profissional anterior"><img src="image/arrow-left.svg" alt=""></button>
+          <button type="button" class="prof-prev" aria-label="Profissional anterior"><img loading="lazy" decoding="async" src="image/arrow-left.svg" alt=""></button>
           <span class="prof-contador">1 / 3</span>
-          <button type="button" class="prof-next" aria-label="Próximo profissional"><img src="image/arrow-right.svg" alt=""></button>
+          <button type="button" class="prof-next" aria-label="Próximo profissional"><img loading="lazy" decoding="async" src="image/arrow-right.svg" alt=""></button>
         </div>
       </div>
     </div>
