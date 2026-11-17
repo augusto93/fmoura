@@ -9,7 +9,7 @@ class SiteContato extends HTMLElement {
             <h3>Contato</h3>
             <div class="ico-content">
               <a href="tel:+55 11 3045 6948"><img loading="lazy" decoding="async" src="image/ico-cont1.png" alt="Telefone"></a>
-              <a href="https://wa.me/55113045694" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="image/ico-cont2.png" alt="WhatsApp"></a>
+              <a href="https://wa.me/551130456948" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="image/ico-cont2.png" alt="WhatsApp"></a>
               <a href="mailto:contato@fmouraadvogados.com"><img loading="lazy" decoding="async" src="image/ico-cont3.png" alt="E-mail"></a>
               <a href="https://ouvidordigital.com.br/" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="image/ico-cont4.png" alt="Ouvidoria"></a>
             </div>

@@ -8,6 +8,7 @@ class SiteHero extends HTMLElement {
             <div>Ética,</div>
             <div>Transparência &</div>
             <div>Compromisso</div>
+            <div class="kicker-sub">Advocacia tributária</div>
           </div>
       </div>
       <div class="hero-svg">
