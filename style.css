@@ -84,6 +84,45 @@
   padding: 5% 0;
 }
 
+/* Redes sociais (LinkedIn + Instagram) */
+.redes {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.redes img {
+  display: block;
+}
+
+.menu-mob .redes a {
+  padding: 0;
+}
+
+.menu-mob .redes {
+  padding: 5% 0;
+}
+
+/* Botão de fechar o menu: mesma posição do botão de abrir na barra do celular */
+.menu-mob .btn {
+  top: 14px;
+  right: var(--gutter);
+}
+
+/* Barra do celular/tablet: o botão fica no fluxo, ao lado do logo */
+.mob .btn {
+  position: static;
+}
+
+.mob-brand img {
+  display: block;
+  width: auto;
+}
+
+[hidden] {
+  display: none !important;
+}
+
 /* Hero */
 .hero{
   position:relative;
@@ -146,14 +185,7 @@ html[data-tela="notebook"] .hero-logo img {
   display: none;
 }
 
-@media screen and (max-width: 767px) {
-  .hero-logo-desktop {
-    display: none;
-  }
-  .hero-logo-mobile {
-    display: block;
-  }
-}
+/* Celular também usa o logo completo (FMOURA ADVOGADOS); a versão só com FMOURA fica fora de uso */
 
 .blink {
   animation: blink 3s infinite;
@@ -173,7 +205,7 @@ html[data-tela="notebook"] .hero-logo img {
   justify-content: center;
   flex-direction: column;
   margin-right: 20%;
-  font-family:"redonda";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -215,7 +247,7 @@ html[data-tela="notebook"] .hero-logo img {
 }
 
 .title{
-  font-family:'redonda';
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 2rem;
 }
@@ -238,13 +270,25 @@ html[data-tela="notebook"] .hero-logo img {
 }
 
 /* Selos: setas ficam no fluxo, alinhadas ao centro do carrossel */
+.selos-titulo {
+  width: 100%;
+  margin-top: 4vh;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--black);
+}
+
 .selos {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
   width: 100%;
-  margin-top: 4vh;
+  margin-top: 16px;
 }
 
 .carousel-container {
@@ -339,7 +383,7 @@ button {
 }
 
 /* .atuacao{
-  font-family:"redonda";
+  font-family: "Roboto", sans-serif;
   font-size: 1.3125rem;
   font-weight: 500;
   color: var(--black);
@@ -350,7 +394,7 @@ button {
 } */
 
 .atuacao{
-  font-family:"redonda";
+  font-family: "Roboto", sans-serif;
   font-size: 1.3125rem;
   font-weight: 500;
   color: var(--black);
@@ -402,7 +446,7 @@ button {
 
 .atua-intro .atua-lead{
   margin-bottom: 1rem;
-  font-family: "redonda";
+  font-family: "Roboto", sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.9rem;
@@ -470,7 +514,7 @@ button {
 
 .socios{
   position: relative;
-  font-family:"redonda";
+  font-family: "Roboto", sans-serif;
   font-size: 1.3125rem;
   font-weight: 500;
   display: flex;
@@ -482,7 +526,7 @@ button {
 }
 
 .socios h3 {
-  font-family:"redonda";
+  font-family: "Roboto", sans-serif;
   color: var(--green);
   font-size: 2rem;
   width: 100%;
@@ -556,7 +600,7 @@ button {
 }
 
 .socios-content .rotulo {
-  font-family: "redonda", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 
@@ -676,7 +720,7 @@ button {
 }
 
 .contato-content h3 {
-  font-family:"redonda";
+  font-family: "Roboto", sans-serif;
   color: var(--white);
   font-size: 2rem;
   font-weight: 400;
@@ -736,6 +780,55 @@ button {
   width: 100%;
   height: 550px;
   margin-top: 10px;
+  position: relative;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.35);
+}
+
+/* Antes do clique: só o endereço e o botão; o Google Maps não é chamado */
+.mapa-aviso {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  text-align: center;
+}
+
+.mapa-carregar {
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+  background: none;
+  padding: 12px 26px;
+  border: 1px solid var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.mapa-carregar:hover,
+.mapa-carregar:focus-visible {
+  background: var(--white);
+  color: var(--grey);
+}
+
+.mapa-nota {
+  font-size: 0.75rem;
+  opacity: .8;
+}
+
+.mapa-link {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .btn-container {
@@ -876,7 +969,7 @@ button {
     width: clamp(130px, 22vh, 190px);
   }
   .mapa {
-    height: min(550px, 100%);
+    height: min(550px, calc(100% - 40px));
     margin-top: 0;
   }
 }
@@ -949,7 +1042,11 @@ html.is-loading .preloader,
     justify-content: flex-start;
   }
   .mob {
-    display: flex ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px var(--gutter);
+    background: var(--green);
   }
   .nav {
     display: none;
@@ -1033,6 +1130,18 @@ html.is-loading .preloader,
   width: 100%;
   height: 450px;
  }
+/* Logos de formação: até 4 por perfil, encolhem juntos para caber na largura */
+.more-icons {
+  gap: 10px;
+}
+.more-icons img,
+.more-icons .icon-logo {
+  flex: 0 1 91px;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
 /* Arrastar para os lados só existe no mobile/tablet */
 .carousel-container,
 .profissionais-track {

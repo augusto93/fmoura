@@ -107,7 +107,7 @@ a{
 }
 
 .legal h1{
-  font-family: "redonda", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 2rem;
   line-height: 1.2;
@@ -148,4 +148,10 @@ a{
 
 .legal-voltar{
   margin-top: 56px !important;
+}
+
+.footer-id{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }

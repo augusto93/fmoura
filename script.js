@@ -58,9 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const alvo = document.querySelector(id);
         if (alvo) {
+          // no celular/tablet a barra do topo é fixa e tem fundo: desconta a altura dela
+          const barraMob = ['mobile', 'tablet'].includes(html.getAttribute('data-tela')) && id !== '#top'
+            ? (headerEl?.offsetHeight || 0) : 0;
           gsap.to(window, {
             duration: DURACAO_SCROLL,
-            scrollTo: { y: alvo, autoKill: false },
+            scrollTo: { y: alvo, offsetY: barraMob, autoKill: false },
             ease: 'power2.out'
           });
         }
@@ -219,10 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav');
   const logo = document.querySelector('.brand img');
   const divsMenu = document.querySelectorAll('.line');
-  const linkedin = document.querySelector('.menu img');
-  const icoBlack = document.querySelector('.mob img');
+  const icosRede = document.querySelectorAll('.menu .ico-rede');
+  const corRedes = cor => icosRede.forEach(img => { img.src = `image/${img.dataset.rede}-${cor}.svg`; });
 
-  if (elementos.length && header && nav && logo && linkedin && icoBlack) {
+  if (elementos.length && header && nav && logo) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -232,8 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
               nav.style.color = "#fff";
               nav.style.justifyContent = "space-between";
               logo.src = "image/logo-white.svg";
-              linkedin.src = "image/linkedin-white.svg";
-              icoBlack.src = "image/ico-bar.svg";
+              corRedes('white');
               divsMenu.forEach(d => d.style.backgroundColor = "#fff");
               break;
 
@@ -242,8 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
               nav.style.color = "#000";
               nav.style.justifyContent = "space-between";
               logo.src = "image/logo-black.svg";
-              linkedin.src = "image/linkedin-black.svg";
-              icoBlack.src = "image/ico-bar-black.svg";
+              corRedes('black');
               divsMenu.forEach(d => d.style.backgroundColor = "#000");
               break;
 
@@ -376,6 +377,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('resize', verificarClamps);
+
+
+  // === Mapa: o Google Maps só carrega depois do clique (nada é enviado ao Google antes disso) ===
+  document.querySelectorAll('[data-mapa-src]').forEach(caixa => {
+    const botao = caixa.querySelector('.mapa-carregar');
+    botao?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = caixa.dataset.mapaSrc;
+      iframe.title = caixa.dataset.mapaTitulo || 'Mapa';
+      iframe.width = '100%';
+      iframe.height = '100%';
+      iframe.style.border = '0';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      caixa.querySelector('.mapa-aviso')?.remove();
+      caixa.appendChild(iframe);
+      caixa.classList.add('mapa-carregado');
+    });
+  });
 
 
   // === Lazy load do fundo da seção Quem somos ===

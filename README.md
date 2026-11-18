@@ -7,9 +7,9 @@ Site institucional desenvolvido em HTML, CSS e JavaScript, organizado em uma pá
 - **HTML5:** estrutura e conteúdo das seções.
 - **CSS3:** identidade visual, layouts com Flexbox, variáveis de cores, animações e adaptação para telas menores por media queries.
 - **JavaScript puro:** navegação, menu mobile, carrossel, expansão de biografias e detalhamento da área de atuação.
-- **GSAP 3:** animações de interface, carregadas via CDN.
-- **Google Fonts e Adobe Fonts:** fontes externas utilizadas na composição visual.
-- **Google Maps:** mapa incorporado por iframe.
+- **GSAP 3.12.5:** animações de interface, hospedado em `vendor/`.
+- **Roboto:** fonte variável hospedada em `fonts/`.
+- **Google Maps:** mapa incorporado por iframe, carregado só depois do clique do visitante.
 
 ## Organização dos arquivos
 
@@ -18,7 +18,9 @@ Site institucional desenvolvido em HTML, CSS e JavaScript, organizado em uma pá
 | `index.html` | Estrutura da página e conteúdo institucional. |
 | `global.css` | Variáveis, estilos globais e regras básicas de layout. |
 | `style.css` | Estilos das seções, componentes e regras responsivas. |
-| `font.css` | Definições e carregamento das fontes Adobe Fonts. |
+| `font.css` | Declaração da Roboto hospedada no site. |
+| `aviso-de-privacidade.html`, `termos-de-uso.html` | Páginas legais. |
+| `robots.txt`, `sitemap.xml` | Indexação nos buscadores. |
 | `script.js` | Interações e animações da página. |
 | `image/` | Fotografias, logotipos, ícones e selos em JPG, PNG e SVG. |
 
@@ -28,6 +30,6 @@ Navegação com rolagem suave, cabeçalho com alteração de aparência durante 
 
 ## Como executar
 
-Baixe ou clone o repositório e abra o arquivo `index.html` em um navegador. Não há instalação de pacotes nem etapa de compilação. As fontes externas, o GSAP e o mapa precisa de conexão com a internet.
+Baixe ou clone o repositório e abra o arquivo `index.html` em um navegador. Não há instalação de pacotes nem etapa de compilação. Só o mapa precisa de conexão com a internet.
 
 O projeto é estático, sem backend ou banco de dados. Para hospedá-lo, mantenha o `index.html` na raiz da pasta publicada e preserve os caminhos dos demais arquivos.

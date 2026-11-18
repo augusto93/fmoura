@@ -13,14 +13,15 @@ class SiteSocios extends HTMLElement {
               <img loading="lazy" decoding="async" class="partner-img" src="image/moura.jpg" alt="Alexandre C. F. Moura">
               <div class="more">
                 <div class="more-icons">
-                  <img loading="lazy" decoding="async" src="image/icom1.png" alt="Símbolo FMoura Advogados">
-                  <img loading="lazy" decoding="async" src="image/icom2.png" alt="Prêmio Análise Advocacia 500">
-                  <img loading="lazy" decoding="async" src="image/icom3.png" alt="Reconhecimento Chambers and Partners">
+                  <img loading="lazy" decoding="async" src="image/icom1.png" alt="Universidade Federal do Estado do Rio de Janeiro (UNIRIO)">
+                  <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-pucsp.png" alt="PUC-SP">
+                  <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-coimbra.png" alt="Faculdade de Direito da Universidade de Coimbra">
+                  <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-fundace.png" alt="FUNDACE">
                 </div>
                 <a style="text-decoration: none;" href="https://www.linkedin.com/in/alexandrecfmoura/" target="_blank" rel="noopener noreferrer">
                   <h4>Alexandre C. F. Moura</h4>
                 </a>
-                <p>Bacharel em Direito pela Universidade Federal do Estado do Rio de Janeiro (2007); pós-graduado em Direito Tributário Constitucional pela PUC/SP (2012)</p>
+                <p>Atuação em consultoria e contencioso tributário.</p>
                 <div class="moreInfo" data-clamp>
                   <p style="font-size: 1rem; font-weight: 400;">
                     Formação acadêmica: Bacharel em Direito pela Universidade Federal do Estado do Rio de Janeiro (2007); pós-graduado em Direito Tributário Constitucional pela PUC/SP (2012)
@@ -43,7 +44,6 @@ class SiteSocios extends HTMLElement {
               <div class="more">
                 <div class="more-icons">
                   <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-saojudas.png" alt="Universidade São Judas Tadeu">
-                  <img loading="lazy" decoding="async" src="image/icom2.png" alt="Prêmio Análise Advocacia 500">
                   <img loading="lazy" decoding="async" class="icon-logo icon-logo-cover" src="image/logo-damasio.png" alt="Faculdade Damásio">
                 </div>
                 <a style="text-decoration: none;" href="https://www.linkedin.com/in/mayara-marra-bispo-13382b85/" target="_blank" rel="noopener noreferrer">
@@ -66,7 +66,6 @@ class SiteSocios extends HTMLElement {
               <div class="more">
                 <div class="more-icons">
                   <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-mackenzie.png" alt="Faculdade Mackenzie Rio">
-                  <img loading="lazy" decoding="async" src="image/icom2.png" alt="Prêmio Análise Advocacia 500">
                   <img loading="lazy" decoding="async" class="icon-logo" src="image/logo-ibmec.png" alt="Ibmec">
                 </div>
                 <a style="text-decoration: none;" href="https://www.linkedin.com/in/b%C3%A1rbara-pedrosa-de-sousa-a189a1104/" target="_blank" rel="noopener noreferrer">

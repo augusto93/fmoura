@@ -19,13 +19,12 @@ class SiteQuemSomos extends HTMLElement {
           </p>
         </div>
       </div>
-      <div class="selos" role="region" aria-label="Reconhecimentos">
+      <h4 class="selos-titulo" id="reconhecimentos">Reconhecimentos</h4>
+      <div class="selos" role="region" aria-labelledby="reconhecimentos">
         <button type="button" class="arrow left" aria-label="Selo anterior"><img decoding="async" height="50" src="image/arrow-left.svg" alt=""></button>
         <div class="carousel-container">
           <div class="carousel">
-            <!-- Análise Advocacia Regional · 2025: falta a imagem do selo (image/badge-2025r.png). Descomentar quando ela for adicionada.
             <figure class="carousel-item"><span class="selo-img-wrap"><img loading="lazy" decoding="async" src="image/badge-2025r.png" alt=""></span><figcaption><span>Análise Advocacia Regional</span><span>2025</span><span>Escritórios Mais Admirados</span></figcaption></figure>
-            -->
             <figure class="carousel-item"><span class="selo-img-wrap"><img loading="lazy" decoding="async" src="image/badge-2025.png" alt=""></span><figcaption><span>Análise Advocacia</span><span>2025</span><span>Escritórios Mais Admirados</span></figcaption></figure>
             <figure class="carousel-item"><span class="selo-img-wrap"><img loading="lazy" decoding="async" src="image/badge-2024r.png" alt=""></span><figcaption><span>Análise Advocacia Regional</span><span>2024</span><span>Escritórios Mais Admirados</span></figcaption></figure>
             <figure class="carousel-item"><span class="selo-img-wrap"><img loading="lazy" decoding="async" src="image/badge-2022r.png" alt=""></span><figcaption><span>Análise Advocacia Regional</span><span>2022</span><span>Escritórios Mais Admirados</span></figcaption></figure>
