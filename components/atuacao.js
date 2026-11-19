@@ -75,7 +75,7 @@ class SiteAtuacao extends HTMLElement {
         </div>
       </div>
       <div class="imgAtuacao">
-        <img loading="lazy" decoding="async" src="image/atuacao-img.jpg" width="1660" height="1105" alt="Livro de Direito Tributário sobre formulário da Receita Federal, com uma caneta">
+        <img loading="lazy" decoding="async" src="image/atuacao-img.jpg" width="1491" height="1105" alt="Livro de Direito Tributário sobre formulário da Receita Federal, com uma caneta">
       </div>
     </div>
   </section>

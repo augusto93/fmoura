@@ -19,6 +19,7 @@ class SiteQuemSomos extends HTMLElement {
           </p>
         </div>
       </div>
+      <div class="reconhecimentos">
       <h4 class="selos-titulo" id="reconhecimentos">Reconhecimentos</h4>
       <div class="selos" role="region" aria-labelledby="reconhecimentos">
         <button type="button" class="arrow left" aria-label="Selo anterior"><img decoding="async" height="50" src="image/arrow-left.svg" alt=""></button>
@@ -35,6 +36,7 @@ class SiteQuemSomos extends HTMLElement {
           </div>
         </div>
         <button type="button" class="arrow right" aria-label="Próximo selo"><img decoding="async" height="50" src="image/arrow-right.svg" alt=""></button>
+      </div>
       </div>
     </div>
   </section>

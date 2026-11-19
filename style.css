@@ -270,9 +270,13 @@ html[data-tela="notebook"] .hero-logo img {
 }
 
 /* Selos: setas ficam no fluxo, alinhadas ao centro do carrossel */
+.reconhecimentos {
+  width: 100%;
+}
+
 .selos-titulo {
   width: 100%;
-  margin-top: 4vh;
+  margin-bottom: 6px;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 500;
@@ -288,7 +292,7 @@ html[data-tela="notebook"] .hero-logo img {
   justify-content: center;
   gap: 24px;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .carousel-container {
